@@ -1,0 +1,12 @@
+server {
+    listen 9200 default_server;
+    listen [::]:9200 default_server ipv6only=on;
+
+    server_name localhost;
+
+    location / {
+       proxy_pass http://127.0.0.1:9201;
+    }
+    auth_basic "Restricted";
+    auth_basic_user_file /htpasswd;
+}
