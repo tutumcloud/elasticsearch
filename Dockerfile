@@ -9,9 +9,8 @@ RUN apt-get update
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y elasticsearch openjdk-7-jre-headless
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y nginx supervisor apache2-utils
 
-
-ENV USER **None**
-ENV PASS **None**
+ENV ELASTICSEARCH_USER **None**
+ENV ELASTICSEARCH_PASS **None**
 
 ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 ADD run.sh /run.sh

@@ -27,12 +27,12 @@ Now you can connect to Elasticsearch by:
 
     curl 127.0.0.1:9200
 
-Running elasticsearch with Http basic authentication
+Running elasticsearch with HTTP basic authentication
 ----------------------------------------------------
 
-Use environment variables `USER` and `PASS` to specify the username and password and activated HTTP basic authentication (HTTP basic auth is deactivated by default):
+Use environment variables `ELASTICSEARCH_USER` and `ELASTICSEARCH_PASS` to specify the username and password and activated HTTP basic authentication (HTTP basic auth is disabled by default):
     
-    docker run -d -p 9200:9200 -e USER=admin -e PASS=mypass tutum/elasticsearch
+    docker run -d -p 9200:9200 -e ELASTICSEARCH_USER=admin -e ELASTICSEARCH_PASS=mypass tutum/elasticsearch
 
 Now you can connect to Elasticsearch by:
 

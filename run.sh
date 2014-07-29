@@ -2,7 +2,7 @@
 
 set -e
 
-if [ "${USER}" == "**None**" ] && [ "${PASS}" == "**None**" ]; then
+if [ "${ELASTICSEARCH_USER}" == "**None**" ] && [ "${ELASTICSEARCH_PASS}" == "**None**" ]; then
     echo "=> Starting Elasticsearch with no base auth ..."
     echo "========================================================================"
     echo "You can now connect to this Elasticsearch Server using:"
@@ -12,12 +12,13 @@ if [ "${USER}" == "**None**" ] && [ "${PASS}" == "**None**" ]; then
     echo "========================================================================"
     exec /usr/share/elasticsearch/bin/elasticsearch -Des.http.port=9200
 else
+    USER=${ELASTICSEARCH_USER:-admin}
     echo "=> Starting Elasticsearch with basic auth ..."
-    echo ${PASS} | htpasswd -i -c /htpasswd  ${USER}
+    echo ${ELASTICSEARCH_PASS} | htpasswd -i -c /htpasswd ${USER}
     echo "========================================================================"
     echo "You can now connect to this Elasticsearch Server using:"
     echo ""
-    echo "    curl ${USER}:${PASS}@localhost:9200"
+    echo "    curl ${USER}:${ELASTICSEARCH_PASS}@localhost:9200"
     echo ""
     echo "========================================================================"
     exec supervisord -n
