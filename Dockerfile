@@ -1,13 +1,13 @@
-FROM ubuntu:trusty
+FROM tutum/curl:trusty
 MAINTAINER FENG, HONGLIN <hfeng@tutum.co>
 
-RUN apt-get update
-RUN apt-get install -y wget software-properties-common 
-RUN wget -O - http://packages.elasticsearch.org/GPG-KEY-elasticsearch | apt-key add -
-RUN add-apt-repository 'deb http://packages.elasticsearch.org/elasticsearch/1.3/debian stable main'
-RUN apt-get update
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y elasticsearch openjdk-7-jre-headless
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y nginx supervisor apache2-utils
+RUN curl http://packages.elasticsearch.org/GPG-KEY-elasticsearch | apt-key add - && \
+    echo 'deb http://packages.elasticsearch.org/elasticsearch/1.3/debian stable main' >> /etc/apt/sources.list && \
+    apt-get update && \
+    apt-get install -y elasticsearch openjdk-7-jre-headless && \
+    apt-get install -y nginx supervisor apache2-utils && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
 ENV ELASTICSEARCH_USER **None**
 ENV ELASTICSEARCH_PASS **None**
