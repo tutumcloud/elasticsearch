@@ -1,6 +1,8 @@
 tutum-docker-elasticsearch
 ==========================
 
+[![Deploy to Tutum](https://s.tutum.co/deploy-to-tutum.svg)](https://dashboard.tutum.co/stack/deploy/)
+
 Simple docker image to run an Elasticsearch server
 
 
@@ -12,15 +14,15 @@ To create the image `tutum/elasticsearch`, execute the following command on tutu
     docker build -t tutum/elasticsearch .
 
 You can also pull the image from the registry:
-    
+
     docker pull tutum/elasticsearch
 
 
-Running elasticsearch 
+Running elasticsearch
 --------------------------------
 
 Start your image binding the external ports `9200` to your container:
-    
+
     docker run -d -p 9200:9200 tutum/elasticsearch
 
 Now you can connect to Elasticsearch by:
@@ -31,7 +33,7 @@ Running elasticsearch with HTTP basic authentication
 ----------------------------------------------------
 
 Use environment variables `ELASTICSEARCH_USER` and `ELASTICSEARCH_PASS` to specify the username and password and activated HTTP basic authentication (HTTP basic auth is disabled by default):
-    
+
     docker run -d -p 9200:9200 -e ELASTICSEARCH_USER=admin -e ELASTICSEARCH_PASS=mypass tutum/elasticsearch
 
 Now you can connect to Elasticsearch by:
