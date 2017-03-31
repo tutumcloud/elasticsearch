@@ -1,4 +1,0 @@
-elasticsearch:
-  image: tutum/elasticsearch
-  ports:
-    - 9200:9200
